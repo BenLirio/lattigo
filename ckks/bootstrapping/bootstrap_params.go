@@ -1,10 +1,15 @@
 package bootstrapping
 
 import (
+<<<<<<< master
 	"github.com/tuneinsight/lattigo/v3/ckks"
 	"github.com/tuneinsight/lattigo/v3/ckks/advanced"
 	"github.com/tuneinsight/lattigo/v3/rlwe"
 	"github.com/tuneinsight/lattigo/v3/utils"
+=======
+	"github.com/ldsec/lattigo/v2/ckks/advanced"
+	"github.com/ldsec/lattigo/v2/utils"
+>>>>>>> [ckks/bootstrapping] : Added key-encapsulation
 )
 
 // Parameters is a struct for the default bootstrapping parameters
@@ -12,6 +17,11 @@ type Parameters struct {
 	SlotsToCoeffsParameters advanced.EncodingMatrixLiteral
 	EvalModParameters       advanced.EvalModLiteral
 	CoeffsToSlotsParameters advanced.EncodingMatrixLiteral
+<<<<<<< master
+=======
+	MainSecretDensity       int // Hamming weight of the main secret
+	EphemeralSecretDensity  int // Hamming weight of the ephemeral secret
+>>>>>>> [ckks/bootstrapping] : Added key-encapsulation
 }
 
 // MarshalBinary encode the target Parameters on a slice of bytes.
@@ -40,6 +50,21 @@ func (p *Parameters) MarshalBinary() (data []byte, err error) {
 	data = append(data, uint8(len(tmp)))
 	data = append(data, tmp...)
 
+<<<<<<< master
+=======
+	tmp = make([]byte, 4)
+	tmp[0] = uint8(p.MainSecretDensity >> 24)
+	tmp[1] = uint8(p.MainSecretDensity >> 16)
+	tmp[2] = uint8(p.MainSecretDensity >> 8)
+	tmp[3] = uint8(p.MainSecretDensity >> 0)
+	data = append(data, tmp...)
+
+	tmp[0] = uint8(p.EphemeralSecretDensity >> 24)
+	tmp[1] = uint8(p.EphemeralSecretDensity >> 16)
+	tmp[2] = uint8(p.EphemeralSecretDensity >> 8)
+	tmp[3] = uint8(p.EphemeralSecretDensity >> 0)
+	data = append(data, tmp...)
+>>>>>>> [ckks/bootstrapping] : Added key-encapsulation
 	return
 }
 
@@ -69,6 +94,19 @@ func (p *Parameters) UnmarshalBinary(data []byte) (err error) {
 		return err
 	}
 
+<<<<<<< master
+=======
+	pt += dLen
+	pt++
+	dLen = int(data[pt])
+
+	p.MainSecretDensity = int(data[pt])<<24 | int(data[pt+1])<<16 | int(data[pt+2])<<8 | int(data[pt+3])
+
+	pt += 4
+
+	p.EphemeralSecretDensity = int(data[pt])<<24 | int(data[pt+1])<<16 | int(data[pt+2])<<8 | int(data[pt+3])
+
+>>>>>>> [ckks/bootstrapping] : Added key-encapsulation
 	return
 }
 
@@ -96,6 +134,7 @@ func (p *Parameters) RotationsForBootstrapping(LogN, LogSlots int) (rotations []
 
 	return
 }
+<<<<<<< master
 
 // DefaultCKKSParameters are default parameters for the bootstrapping.
 // To be used in conjonction with DefaultParameters.
@@ -484,3 +523,5 @@ var DefaultParameters = []Parameters{
 		},
 	},
 }
+=======
+>>>>>>> [ckks/bootstrapping] : Added key-encapsulation
