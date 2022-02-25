@@ -121,8 +121,8 @@ func (bb *bootstrapperBase) CheckKeys(btpKey Key) (err error) {
 
 	rotKeyIndex := []int{}
 	rotKeyIndex = append(rotKeyIndex, bb.params.RotationsForTrace(bb.params.LogSlots(), bb.params.MaxLogSlots())...)
-	rotKeyIndex = append(rotKeyIndex, bb.CoeffsToSlotsParameters.Rotations(bb.params.LogN(), bb.params.LogSlots())...)
-	rotKeyIndex = append(rotKeyIndex, bb.SlotsToCoeffsParameters.Rotations(bb.params.LogN(), bb.params.LogSlots())...)
+	rotKeyIndex = append(rotKeyIndex, bb.CoeffsToSlotsParameters.Rotations()...)
+	rotKeyIndex = append(rotKeyIndex, bb.SlotsToCoeffsParameters.Rotations()...)
 
 	rotMissing := []int{}
 	for _, i := range rotKeyIndex {
