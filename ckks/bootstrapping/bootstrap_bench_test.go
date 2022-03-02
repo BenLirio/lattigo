@@ -25,15 +25,19 @@ func BenchmarkBootstrapp(b *testing.B) {
 
 	kgen := ckks.NewKeyGenerator(params)
 	sk := kgen.GenSecretKey()
-	rlk := kgen.GenRelinearizationKey(sk, 2, 0)
+	rlk := kgen.GenRelinearizationKey(sk, 1)
 
 	rotations := btpParams.RotationsForBootstrapping(params)
+<<<<<<< btp_eprint
 <<<<<<< btp_eprint
 	rotkeys := kgen.GenRotationKeysForRotations(rotations, true, sk)
 	swkDtS, swkStD := btpParams.GenEncapsulationSwitchingKeys(params, sk)
 =======
 	rotkeys := kgen.GenRotationKeysForRotations(rotations, true, sk, 0)
 >>>>>>> First step for adding bit-decomp
+=======
+	rotkeys := kgen.GenRotationKeysForRotations(rotations, true, sk)
+>>>>>>> all test passing
 
 	if btp, err = NewBootstrapper(params, btpParams, Key{EvaluationKey: rlwe.EvaluationKey{Rlk: rlk, Rtks: rotkeys}, SwkDtS: swkDtS, SwkStD: swkStD}); err != nil {
 		panic(err)
