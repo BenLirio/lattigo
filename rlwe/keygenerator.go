@@ -1,11 +1,6 @@
 package rlwe
 
 import (
-<<<<<<< dev_bfv_poly
-	"math"
-
-=======
->>>>>>> First step for adding bit-decomp
 	"github.com/tuneinsight/lattigo/v3/ring"
 	"github.com/tuneinsight/lattigo/v3/rlwe/gadget"
 	"github.com/tuneinsight/lattigo/v3/rlwe/ringqp"
@@ -350,6 +345,7 @@ func (keygen *keyGenerator) GenSwitchingKey(skInput, skOutput *SecretKey) (swk *
 func (keygen *keyGenerator) genSwitchingKey(skIn *ring.Poly, skOut ringqp.Poly, swk *SwitchingKey) {
 
 <<<<<<< dev_bfv_poly
+<<<<<<< dev_bfv_poly
 	ringQP := keygen.params.RingQP()
 
 <<<<<<< dev_bfv_poly
@@ -396,6 +392,10 @@ func (keygen *keyGenerator) genSwitchingKey(skIn *ring.Poly, skOut ringqp.Poly, 
 	levelP := swk.LevelP()
 >>>>>>> wip
 >>>>>>> [rlwe]: complete refactoring
+=======
+	levelQ := swk.LevelQ()
+	levelP := swk.LevelP()
+>>>>>>> rebased on dev_bfv_poly
 
 <<<<<<< dev_bfv_poly:rlwe/keygen.go
 <<<<<<< dev_bfv_poly

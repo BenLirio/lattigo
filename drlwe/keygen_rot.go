@@ -2,7 +2,6 @@ package drlwe
 
 import (
 	"errors"
-	"math/big"
 
 	"github.com/tuneinsight/lattigo/v3/ring"
 	"github.com/tuneinsight/lattigo/v3/rlwe"
@@ -111,41 +110,22 @@ func (rtg *RTGProtocol) SampleCRP(crs CRS) RTGCRP {
 func (rtg *RTGProtocol) GenShare(sk *rlwe.SecretKey, galEl uint64, crp RTGCRP, shareOut *RTGShare) {
 
 	ringQ := rtg.params.RingQ()
-	ringP := rtg.params.RingP()
 	ringQP := rtg.params.RingQP()
+
 	levelQ := sk.Value.Q.Level()
+	levelP := sk.Value.P.Level()
+
+	hasModulusP := levelP > -1
 
 	galElInv := ring.ModExp(galEl, ringQ.NthRoot-1, ringQ.NthRoot)
 
 	ringQ.PermuteNTT(sk.Value.Q, galElInv, rtg.tmpPoly1.Q)
 
-<<<<<<< dev_bfv_poly
-	ringQ.MulScalarBigint(sk.Value.Q, ringP.ModulusBigint[levelP], rtg.tmpPoly0.Q)
-=======
-	hasModulusP := sk.Value.P != nil
->>>>>>> First step for adding bit-decomp
-
-	var levelP int
 	if hasModulusP {
-
-		ringP.PermuteNTT(sk.Value.P, galElInv, rtg.tmpPoly1.P)
-
-		levelP = sk.Value.P.Level()
-
-		var pBigInt *big.Int
-		if levelP == rtg.params.PCount()-1 {
-			pBigInt = rtg.params.RingP().ModulusBigint
-		} else {
-			P := rtg.params.RingP().Modulus
-			pBigInt = new(big.Int).SetUint64(P[0])
-			for i := 1; i < levelP+1; i++ {
-				pBigInt.Mul(pBigInt, ring.NewUint(P[i]))
-			}
-		}
-
-		// Computes P * sk
-		ringQ.MulScalarBigintLvl(levelQ, sk.Value.Q, pBigInt, rtg.tmpPoly0.Q)
+		ringQP.RingP.PermuteNTT(sk.Value.P, galElInv, rtg.tmpPoly1.P)
+		ringQ.MulScalarBigint(sk.Value.Q, ringQP.RingP.ModulusBigint[levelP], rtg.tmpPoly0.Q)
 	} else {
+		levelP = 0
 		ring.CopyLvl(levelQ, sk.Value.Q, rtg.tmpPoly0.Q)
 	}
 
