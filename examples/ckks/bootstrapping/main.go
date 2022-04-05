@@ -33,22 +33,16 @@ func main() {
 	// LogSlots is hardcoded to 15 in the parameters, but can be changed from 1 to 15.
 	// When changing logSlots make sure that the number of levels allocated to CtS and StC is
 	// smaller or equal to logSlots.
-<<<<<<< btp_eprint
 
 	paramSet := bootstrapping.DefaultParametersSparse[0] // bootstrapping.DefaultParametersDense[0]
 	ckksParams := paramSet.SchemeParams
 	btpParams := paramSet.BootstrappingParams
-
-=======
-	ckksParams := bootstrapping.DefaultCKKSParameters[0]
 
 	if *flagShort {
 		ckksParams.LogN = 13
 		ckksParams.LogSlots = 12
 	}
 
-	btpParams := bootstrapping.DefaultParameters[0]
->>>>>>> [rlwe]: further refactoring
 	params, err := ckks.NewParametersFromLiteral(ckksParams)
 	if err != nil {
 		panic(err)
@@ -69,21 +63,12 @@ func main() {
 	fmt.Println()
 	fmt.Println("Generating bootstrapping keys...")
 	rotations := btpParams.RotationsForBootstrapping(params)
-<<<<<<< btp_eprint
-<<<<<<< btp_eprint
+
 	rotkeys := kgen.GenRotationKeysForRotations(rotations, true, sk)
-	rlk := kgen.GenRelinearizationKey(sk, 2)
 	swkDtS, swkStD := btpParams.GenEncapsulationSwitchingKeys(params, sk)
-	if btp, err = bootstrapping.NewBootstrapper(params, btpParams, bootstrapping.Key{EvaluationKey: rlwe.EvaluationKey{Rlk: rlk, Rtks: rotkeys}, SwkDtS: swkDtS, SwkStD: swkStD}); err != nil {
-=======
-	rotkeys := kgen.GenRotationKeysForRotations(rotations, true, sk, bitDecomp)
-	rlk := kgen.GenRelinearizationKey(sk, 2, bitDecomp)
-=======
-	rotkeys := kgen.GenRotationKeysForRotations(rotations, true, sk)
 	rlk := kgen.GenRelinearizationKey(sk, 1)
->>>>>>> all test passing
-	if btp, err = bootstrapping.NewBootstrapper(params, btpParams, rlwe.EvaluationKey{Rlk: rlk, Rtks: rotkeys}); err != nil {
->>>>>>> First step for adding bit-decomp
+
+	if btp, err = bootstrapping.NewBootstrapper(params, btpParams, bootstrapping.Key{EvaluationKey: rlwe.EvaluationKey{Rlk: rlk, Rtks: rotkeys}, SwkDtS: swkDtS, SwkStD: swkStD}); err != nil {
 		panic(err)
 	}
 	fmt.Println("Done")

@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/tuneinsight/lattigo/v3/ckks"
 	"github.com/tuneinsight/lattigo/v3/rlwe"
 	"github.com/tuneinsight/lattigo/v3/utils"
@@ -99,16 +100,8 @@ func testbootstrap(params ckks.Parameters, btpParams Parameters, t *testing.T) {
 		decryptor := ckks.NewDecryptor(params, sk)
 
 		rotations := btpParams.RotationsForBootstrapping(params)
-<<<<<<< btp_eprint
-<<<<<<< btp_eprint
 		rotkeys := kgen.GenRotationKeysForRotations(rotations, true, sk)
 		swkDtS, swkStD := btpParams.GenEncapsulationSwitchingKeys(params, sk)
-=======
-		rotkeys := kgen.GenRotationKeysForRotations(rotations, true, sk, 0)
->>>>>>> First step for adding bit-decomp
-=======
-		rotkeys := kgen.GenRotationKeysForRotations(rotations, true, sk)
->>>>>>> all test passing
 
 		btp, err := NewBootstrapper(params, btpParams, Key{EvaluationKey: rlwe.EvaluationKey{Rlk: rlk, Rtks: rotkeys}, SwkDtS: swkDtS, SwkStD: swkStD})
 		if err != nil {
@@ -132,13 +125,11 @@ func testbootstrap(params ckks.Parameters, btpParams Parameters, t *testing.T) {
 
 		ciphertexts := make([]*ckks.Ciphertext, 2)
 		bootstrappers := make([]*Bootstrapper, 2)
-		for i := range ciphertexts {
+		bootstrappers[0] = btp
+		ciphertexts[0] = encryptor.EncryptNew(plaintext)
+		for i := 1; i < len(ciphertexts); i++{
 			ciphertexts[i] = encryptor.EncryptNew(plaintext)
-			if i == 0 {
-				bootstrappers[i] = btp
-			} else {
-				bootstrappers[i] = bootstrappers[0].ShallowCopy()
-			}
+			bootstrappers[i] = bootstrappers[0].ShallowCopy()
 		}
 
 		var wg sync.WaitGroup
@@ -163,4 +154,7 @@ func verifyTestVectors(params ckks.Parameters, encoder ckks.Encoder, decryptor c
 	if *printPrecisionStats {
 		t.Log(precStats.String())
 	}
+
+	require.GreaterOrEqual(t, precStats.MeanPrecision.Real, 12.0)
+	require.GreaterOrEqual(t, precStats.MeanPrecision.Imag, 12.0)
 }
