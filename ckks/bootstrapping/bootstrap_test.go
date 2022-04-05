@@ -50,7 +50,7 @@ func TestBootstrap(t *testing.T) {
 		t.Skip("skipping bootstrapping tests (add -test-bootstrapping to run the bootstrapping tests)")
 	}
 
-	paramSet := DefaultParametersSparse[3]
+	paramSet := DefaultParametersSparse[0]
 	ckksParams := paramSet.SchemeParams
 	btpParams := paramSet.BootstrappingParams
 
@@ -92,11 +92,7 @@ func testbootstrap(params ckks.Parameters, btpParams Parameters, t *testing.T) {
 	t.Run(ParamsToString(params, "Bootstrapping/FullCircuit/"), func(t *testing.T) {
 
 		kgen := ckks.NewKeyGenerator(params)
-<<<<<<< master
 		sk := kgen.GenSecretKey()
-=======
-		sk := kgen.GenSecretKeySparse(params.N() >> 1)
->>>>>>> [ckks/bootstrapping] : Added key-encapsulation
 		rlk := kgen.GenRelinearizationKey(sk, 2)
 		encoder := ckks.NewEncoder(params)
 		encryptor := ckks.NewEncryptor(params, sk)

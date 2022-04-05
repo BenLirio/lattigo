@@ -1,9 +1,9 @@
 package bootstrapping
 
 import (
-	"github.com/ldsec/lattigo/v2/ckks"
-	"github.com/ldsec/lattigo/v2/ckks/advanced"
-	"github.com/ldsec/lattigo/v2/rlwe"
+	"github.com/tuneinsight/lattigo/v3/ckks"
+	"github.com/tuneinsight/lattigo/v3/ckks/advanced"
+	"github.com/tuneinsight/lattigo/v3/rlwe"
 )
 
 type defaultParametersLiteral struct {
@@ -28,6 +28,7 @@ var (
 			LogSlots:     15,
 			DefaultScale: 1 << 40,
 			Sigma:        rlwe.DefaultSigma,
+			H:            192,
 			Q: []uint64{
 				0x10000000006e0001, // 60 Q0
 				0x10000140001,      // 40
@@ -65,7 +66,6 @@ var (
 		},
 
 		Parameters{
-			MainSecretDensity:      192,
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
@@ -114,6 +114,7 @@ var (
 			LogSlots:     15,
 			DefaultScale: 1 << 45,
 			Sigma:        rlwe.DefaultSigma,
+			H:            192,
 			Q: []uint64{
 				0x10000000006e0001, // 60 Q0
 				0x2000000a0001,     // 45
@@ -149,7 +150,6 @@ var (
 		},
 
 		Parameters{
-			MainSecretDensity:      192,
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
@@ -198,6 +198,7 @@ var (
 			LogSlots:     15,
 			DefaultScale: 1 << 30,
 			Sigma:        rlwe.DefaultSigma,
+			H:            192,
 			Q: []uint64{
 				0x80000000080001,   // 55 Q0
 				0xffffffffffc0001,  // 60
@@ -232,7 +233,6 @@ var (
 		},
 
 		Parameters{
-			MainSecretDensity:      192,
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
@@ -280,6 +280,7 @@ var (
 			LogSlots:     14,
 			DefaultScale: 1 << 25,
 			Sigma:        rlwe.DefaultSigma,
+			H:            192,
 			Q: []uint64{
 				0x1fff90001,       // 32 Q0
 				0x4000000420001,   // 50
@@ -303,7 +304,6 @@ var (
 		},
 
 		Parameters{
-			MainSecretDensity:      192,
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
@@ -348,6 +348,7 @@ var (
 			LogSlots:     15,
 			DefaultScale: 1 << 40,
 			Sigma:        rlwe.DefaultSigma,
+			H:            32768,
 			Q: []uint64{
 				0x10000000006e0001, // 60 Q0
 				0x10000140001,      // 40
@@ -390,7 +391,6 @@ var (
 		},
 
 		Parameters{
-			MainSecretDensity:      32768,
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
@@ -439,6 +439,7 @@ var (
 			LogSlots:     15,
 			DefaultScale: 1 << 45,
 			Sigma:        rlwe.DefaultSigma,
+			H:            32768,
 			Q: []uint64{
 				0x10000000006e0001, // 60 Q0
 				0x2000000a0001,     // 45
@@ -479,7 +480,6 @@ var (
 		},
 
 		Parameters{
-			MainSecretDensity:      32768,
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
@@ -528,6 +528,7 @@ var (
 			LogSlots:     15,
 			DefaultScale: 1 << 30,
 			Sigma:        rlwe.DefaultSigma,
+			H:            32768,
 			Q: []uint64{
 				0x80000000080001,   // 55 Q0
 				0xffffffffffc0001,  // 60
@@ -566,7 +567,6 @@ var (
 		},
 
 		Parameters{
-			MainSecretDensity:      32768,
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
@@ -614,6 +614,7 @@ var (
 			LogSlots:     14,
 			DefaultScale: 1 << 31,
 			Sigma:        rlwe.DefaultSigma,
+			H:            16384,
 			Q: []uint64{
 				0x10000140001,      // 40 Q0
 				0x7ffe0001,         // 31
@@ -639,7 +640,6 @@ var (
 		},
 
 		Parameters{
-			MainSecretDensity:      16384,
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,

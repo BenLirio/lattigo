@@ -24,13 +24,8 @@ func main() {
 	var plaintext *ckks.Plaintext
 
 	// Bootstrapping parameters
-<<<<<<< master
-	// Four sets of parameters (index 0 to 3) ensuring 128 bit of security
-	// are available in github.com/tuneinsight/lattigo/v3/ckks/bootstrap_params
-=======
 	// 2xFour sets of parameters (index 0 to 3) ensuring 128 bit of security
 	// are available in github.com/ldsec/lattigo/v2/ckks/bootstrapping/default_params.go
->>>>>>> [ckks/bootstrapping] : Added key-encapsulation
 	// LogSlots is hardcoded to 15 in the parameters, but can be changed from 1 to 15.
 	// When changing logSlots make sure that the number of levels allocated to CtS and StC is
 	// smaller or equal to logSlots.
@@ -45,20 +40,12 @@ func main() {
 	}
 
 	fmt.Println()
-<<<<<<< master
-	fmt.Printf("CKKS parameters: logN = %d, logSlots = %d, h = %d, logQP = %d, levels = %d, scale= 2^%f, sigma = %f \n", params.LogN(), params.LogSlots(), params.HammingWeight(), params.LogQP(), params.QCount(), math.Log2(params.DefaultScale()), params.Sigma())
-=======
-	fmt.Printf("CKKS parameters: logN = %d, logSlots = %d, H(%d; %d), logQP = %d, levels = %d, scale= 2^%f, sigma = %f \n", params.LogN(), params.LogSlots(), btpParams.MainSecretDensity, btpParams.EphemeralSecretDensity, params.LogQP(), params.QCount(), math.Log2(params.DefaultScale()), params.Sigma())
->>>>>>> [ckks/bootstrapping] : Added key-encapsulation
+	fmt.Printf("CKKS parameters: logN = %d, logSlots = %d, H(%d; %d), logQP = %d, levels = %d, scale= 2^%f, sigma = %f \n", params.LogN(), params.LogSlots(), params.HammingWeight(), btpParams.EphemeralSecretDensity, params.LogQP(), params.QCount(), math.Log2(params.DefaultScale()), params.Sigma())
 
 	// Scheme context and keys
 	kgen = ckks.NewKeyGenerator(params)
 
-<<<<<<< master
 	sk, pk = kgen.GenKeyPair()
-=======
-	sk, pk = kgen.GenKeyPairSparse(btpParams.MainSecretDensity)
->>>>>>> [ckks/bootstrapping] : Added key-encapsulation
 
 	encoder = ckks.NewEncoder(params)
 	decryptor = ckks.NewDecryptor(params, sk)

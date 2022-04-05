@@ -85,7 +85,7 @@ func (p *Parameters) GenEncapsulationSwitchingKeys(params ckks.Parameters, skDen
 
 	kgenSparse := rlwe.NewKeyGenerator(paramsSparse)
 	kgenDense := rlwe.NewKeyGenerator(params.Parameters)
-	skSparse := kgenSparse.GenSecretKeySparse(p.EphemeralSecretDensity)
+	skSparse := kgenSparse.GenSecretKeyWithHammingWeight(p.EphemeralSecretDensity)
 
 	return kgenDense.GenSwitchingKey(skDense, skSparse), kgenDense.GenSwitchingKey(skSparse, skDense)
 }
