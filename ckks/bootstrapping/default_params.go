@@ -25,10 +25,10 @@ var (
 	N16QP1546H192H32 = defaultParametersLiteral{
 		ckks.ParametersLiteral{
 			ParametersLiteral: rlwe.ParametersLiteral{
-				LogN:         16,
-				Sigma:        rlwe.DefaultSigma,
-				H:            192,
-				LogBase2:     0,
+				LogN:     16,
+				Sigma:    rlwe.DefaultSigma,
+				H:        192,
+				LogBase2: 0,
 				Q: []uint64{
 					0x10000000006e0001, // 60 Q0
 					0x10000140001,      // 40
@@ -73,7 +73,7 @@ var (
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          12,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -96,7 +96,7 @@ var (
 			},
 			CoeffsToSlotsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.CoeffsToSlots,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          24,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -117,10 +117,10 @@ var (
 	N16QP1547H192H32 = defaultParametersLiteral{
 		ckks.ParametersLiteral{
 			ParametersLiteral: rlwe.ParametersLiteral{
-				LogN:         16,
-				Sigma:        rlwe.DefaultSigma,
-				H:            192,
-				LogBase2:     0,
+				LogN:     16,
+				Sigma:    rlwe.DefaultSigma,
+				H:        192,
+				LogBase2: 0,
 				Q: []uint64{
 					0x10000000006e0001, // 60 Q0
 					0x2000000a0001,     // 45
@@ -163,7 +163,7 @@ var (
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          8,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -186,7 +186,7 @@ var (
 			},
 			CoeffsToSlotsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.CoeffsToSlots,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          23,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -207,10 +207,10 @@ var (
 	N16QP1553H192H32 = defaultParametersLiteral{
 		ckks.ParametersLiteral{
 			ParametersLiteral: rlwe.ParametersLiteral{
-				LogN:         16,
-				Sigma:        rlwe.DefaultSigma,
-				H:            192,
-				LogBase2:     0,
+				LogN:     16,
+				Sigma:    rlwe.DefaultSigma,
+				H:        192,
+				LogBase2: 0,
 				Q: []uint64{
 					0x80000000080001,   // 55 Q0
 					0xffffffffffc0001,  // 60
@@ -252,7 +252,7 @@ var (
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          9,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -274,7 +274,7 @@ var (
 			},
 			CoeffsToSlotsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.CoeffsToSlots,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          21,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -295,10 +295,10 @@ var (
 	N15QP768H192H32 = defaultParametersLiteral{
 		ckks.ParametersLiteral{
 			ParametersLiteral: rlwe.ParametersLiteral{
-				LogN:         15,
-				Sigma:        rlwe.DefaultSigma,
-				H:            192,
-				LogBase2:     0,
+				LogN:     15,
+				Sigma:    rlwe.DefaultSigma,
+				H:        192,
+				LogBase2: 0,
 				Q: []uint64{
 					0x1fff90001,       // 32 Q0
 					0x4000000420001,   // 50
@@ -329,7 +329,7 @@ var (
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          3,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -350,7 +350,7 @@ var (
 			},
 			CoeffsToSlotsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.CoeffsToSlots,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          13,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -369,10 +369,10 @@ var (
 	N16QP1767H32768H32 = defaultParametersLiteral{
 		ckks.ParametersLiteral{
 			ParametersLiteral: rlwe.ParametersLiteral{
-				LogN:         16,
-				Sigma:        rlwe.DefaultSigma,
-				H:            32768,
-				LogBase2:     0,
+				LogN:     16,
+				Sigma:    rlwe.DefaultSigma,
+				H:        32768,
+				LogBase2: 0,
 				Q: []uint64{
 					0x10000000006e0001, // 60 Q0
 					0x10000140001,      // 40
@@ -422,7 +422,7 @@ var (
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          16,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -445,7 +445,7 @@ var (
 			},
 			CoeffsToSlotsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.CoeffsToSlots,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          28,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -466,10 +466,10 @@ var (
 	N16QP1788H32768H32 = defaultParametersLiteral{
 		ckks.ParametersLiteral{
 			ParametersLiteral: rlwe.ParametersLiteral{
-				LogN:         16,
-				Sigma:        rlwe.DefaultSigma,
-				H:            32768,
-				LogBase2:     0,
+				LogN:     16,
+				Sigma:    rlwe.DefaultSigma,
+				H:        32768,
+				LogBase2: 0,
 				Q: []uint64{
 					0x10000000006e0001, // 60 Q0
 					0x2000000a0001,     // 45
@@ -517,7 +517,7 @@ var (
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          12,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -540,7 +540,7 @@ var (
 			},
 			CoeffsToSlotsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.CoeffsToSlots,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          27,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -561,10 +561,10 @@ var (
 	N16QP1793H32768H32 = defaultParametersLiteral{
 		ckks.ParametersLiteral{
 			ParametersLiteral: rlwe.ParametersLiteral{
-				LogN:         16,
-				Sigma:        rlwe.DefaultSigma,
-				H:            32768,
-				LogBase2:     0,
+				LogN:     16,
+				Sigma:    rlwe.DefaultSigma,
+				H:        32768,
+				LogBase2: 0,
 				Q: []uint64{
 					0x80000000080001,   // 55 Q0
 					0xffffffffffc0001,  // 60
@@ -610,7 +610,7 @@ var (
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          13,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -632,7 +632,7 @@ var (
 			},
 			CoeffsToSlotsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.CoeffsToSlots,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          25,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -653,10 +653,10 @@ var (
 	N15QP880H16384H32 = defaultParametersLiteral{
 		ckks.ParametersLiteral{
 			ParametersLiteral: rlwe.ParametersLiteral{
-				LogN:         15,
-				Sigma:        rlwe.DefaultSigma,
-				H:            16384,
-				LogBase2:     0,
+				LogN:     15,
+				Sigma:    rlwe.DefaultSigma,
+				H:        16384,
+				LogBase2: 0,
 				Q: []uint64{
 					0x10000140001,      // 40 Q0
 					0x7ffe0001,         // 31
@@ -689,7 +689,7 @@ var (
 			EphemeralSecretDensity: 32,
 			SlotsToCoeffsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.SlotsToCoeffs,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          5,
 				BSGSRatio:           2.0,
 				BitReversed:         false,
@@ -710,7 +710,7 @@ var (
 			},
 			CoeffsToSlotsParameters: advanced.EncodingMatrixLiteral{
 				LinearTransformType: advanced.CoeffsToSlots,
-				RepackImag2Real: true,
+				RepackImag2Real:     true,
 				LevelStart:          15,
 				BSGSRatio:           2.0,
 				BitReversed:         false,

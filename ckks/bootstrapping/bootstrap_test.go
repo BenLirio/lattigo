@@ -127,7 +127,7 @@ func testbootstrap(params ckks.Parameters, btpParams Parameters, t *testing.T) {
 		bootstrappers := make([]*Bootstrapper, 2)
 		bootstrappers[0] = btp
 		ciphertexts[0] = encryptor.EncryptNew(plaintext)
-		for i := 1; i < len(ciphertexts); i++{
+		for i := 1; i < len(ciphertexts); i++ {
 			ciphertexts[i] = encryptor.EncryptNew(plaintext)
 			bootstrappers[i] = bootstrappers[0].ShallowCopy()
 		}
